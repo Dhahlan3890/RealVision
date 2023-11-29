@@ -3,6 +3,7 @@ from face_recognition import faceRecognitionPipeline
 import matplotlib.pyplot as plt
 import tkinter as tk
 from tkinter import filedialog
+from pathlib import Path
 
 class FaceRecognitionApp:
     def __init__(self, root):
@@ -12,22 +13,52 @@ class FaceRecognitionApp:
         # Set the initial window size (width x height)
         self.root.geometry("800x600")
 
+        # Load a background image
+        background_image_path = Path("background.png")
+        if background_image_path.exists():
+            self.background_image = tk.PhotoImage(file=background_image_path)
+            self.background_label = tk.Label(self.root, image=self.background_image)
+            self.background_label.place(relwidth=1, relheight=1)
+
         # Create a frame to contain the widgets
         self.frame = tk.Frame(self.root)
         self.frame.pack(fill=tk.BOTH, expand=True)
 
-        # Create buttons for image and video processing
-        self.image_button = tk.Button(self.frame, text="Process Image", command=self.process_image, width=20)
+        # Load button images
+        image_button_image = tk.PhotoImage(file="image_button.png")
+        video_button_image = tk.PhotoImage(file="video_button.png")
+        webcam_button_image = tk.PhotoImage(file="webcam_button.png")
+
+        # Create attractive buttons for image and video processing
+        self.image_button = tk.Button(
+            self.frame,
+            text="Process Image",
+            image=image_button_image,
+            compound=tk.TOP,  # Place image above text
+            command=self.process_image,
+        )
         self.image_button.grid(row=0, column=0, pady=10, padx=10)
 
-        self.video_button = tk.Button(self.frame, text="Process Video", command=self.process_video, width=20)
+        self.video_button = tk.Button(
+            self.frame,
+            text="Process Video",
+            image=video_button_image,
+            compound=tk.TOP,  # Place image above text
+            command=self.process_video,
+        )
         self.video_button.grid(row=1, column=0, pady=10, padx=10)
 
-        self.webcam_button = tk.Button(self.frame, text="Process Webcam", command=self.process_webcam, width=20)
+        self.webcam_button = tk.Button(
+            self.frame,
+            text="Process Webcam",
+            image=webcam_button_image,
+            compound=tk.TOP,  # Place image above text
+            command=self.process_webcam,
+        )
         self.webcam_button.grid(row=2, column=0, pady=10, padx=10)
 
         # Load a placeholder image for the right side
-        self.placeholder_image = tk.PhotoImage(file="C:\\Users\\Hp\\OneDrive\\Documents\\GitHub\\Face_Recognition\\Gender_Recognition\\app.jpg")  # Replace with the path to your image
+        self.placeholder_image = tk.PhotoImage(file="app.png")  # Replace with the path to your image
         self.image_label = tk.Label(self.frame, image=self.placeholder_image)
         self.image_label.grid(row=0, column=1, rowspan=3, pady=10, padx=10)
 
