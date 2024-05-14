@@ -1,13 +1,13 @@
 # RealVision
 
-This project implements a face recognition pipeline using machine learning techniques. It detects faces in images, crops and normalizes them, then applies dimensionality reduction and a support vector machine (SVM) classifier for recognition.
+This project implements a face recognition pipeline using machine learning techniques. It detects faces in images, crops and normalizes them, then applies dimensionality reduction and a support vector machine (SVM) classifier for recognition of gender and facial expression.
 
 ## Features
 
 - Detects faces in images using Haar cascade classifier.
 - Normalizes and preprocesses face images.
 - Utilizes Principal Component Analysis (PCA) for dimensionality reduction.
-- Applies SVM for classification.
+- Applies SVM for classification of gender and facial expression.
 - Provides probability scores for classification results.
 
 ## Installation
@@ -35,13 +35,13 @@ This project implements a face recognition pipeline using machine learning techn
 
 ## Models and Data
 
-- `./model`: Contains the pre-trained SVM model, PCA model, and mean face array for face recognition.
+- `./model`: Contains the pre-trained SVM models, PCA models, and mean face arrays for gender and facial expression recognition.
 - `./FEA_model`: Contains additional pre-trained models for feature extraction and classification.
 - `./model/haarcascade_frontalface_default.xml`: Haar cascade classifier for face detection.
 
 ## Results
 
-The pipeline produces images with detected faces and their respective classifications and confidence scores overlaid.
+The pipeline produces images with detected faces and their respective classifications and confidence scores overlaid, including gender and facial expression (happy, sad, angry).
 
 ## Contributing
 
@@ -50,4 +50,3 @@ Contributions are welcome! Please create a pull request with your changes.
 ## Acknowledgments
 
 - This project utilizes OpenCV, NumPy, and scikit-learn libraries.
-
